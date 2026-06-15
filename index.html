@@ -3,42 +3,130 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>제목 없음 - 정적 HTML 포트폴리오</title>
-  <link rel="stylesheet" href="style.css">
+  <title>INTERACTIVE COMPUTING 2026</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; }
+    body { background: #fff; overflow: hidden; }
+    
+    .page-shell { position: relative; width: 100%; height: 100vh; }
+    
+    .hero-panel {
+      width: 100%;
+      height: 100%;
+      background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1440 1080" xmlns="http://www.w3.org/2000/svg"><rect width="1440" height="1080" fill="white"/><text x="24" y="50" font-size="32" font-weight="700" font-family="system-ui,-apple-system,sans-serif">INTERACTIVE COMPUTING 2026</text><polygon points="0,660 220,810 220,1080 0,930" fill="%23ffeb3b"/><polygon points="80,780 380,920 380,1080 80,940" fill="%23ffb74d"/><polygon points="180,620 500,770 500,1080 180,930" fill="%23ff7043"/><circle cx="360" cy="550" r="110" fill="%23c77373"/></svg>');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+    }
+    
+    .menu-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 1px solid rgba(20,20,21,.18);
+      background: rgba(255,255,255,.86);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      padding: 0;
+      z-index: 100;
+    }
+    
+    .menu-toggle span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: #141415;
+      border-radius: 999px;
+    }
+    
+    .menu-toggle span:nth-child(2) {
+      margin: 6px 0;
+    }
+    
+    .slide-menu {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: min(420px, 100%);
+      height: 100vh;
+      transform: translateX(100%);
+      transition: transform .35s ease;
+      background: rgba(18,18,19,.95);
+      border-left: 1px solid rgba(255,255,255,.12);
+      box-shadow: -32px 0 120px rgba(20,20,21,.18);
+      padding: 28px 24px 32px;
+      z-index: 10;
+      color: #f4f4f5;
+      overflow-y: auto;
+    }
+    
+    .slide-menu.open {
+      transform: translateX(0);
+    }
+    
+    .menu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+    
+    .menu-header strong {
+      text-transform: uppercase;
+      letter-spacing: .3em;
+      font-size: .95rem;
+      color: #fff;
+    }
+    
+    .close-btn {
+      border: none;
+      background: transparent;
+      color: #fff;
+      font-size: 2.2rem;
+      line-height: 1;
+      cursor: pointer;
+    }
+    
+    .menu-items {
+      display: grid;
+      gap: 12px;
+    }
+    
+    .menu-items a {
+      display: block;
+      padding: 16px 18px;
+      color: #fff;
+      background: rgba(255,255,255,.06);
+      border-radius: 18px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform .22s ease, background .22s ease;
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 1rem;
+    }
+    
+    .menu-items a:hover {
+      background: rgba(255,255,255,.14);
+      transform: translateX(4px);
+    }
+  </style>
 </head>
 <body>
   <div class="page-shell">
-    <header class="topbar">
-      <div class="topbar-left">
-        <span class="brand-tag">INTERACTIVE COMPUTING</span>
-      </div>
-      <button class="menu-toggle" id="menuToggle" aria-label="메뉴 열기">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </header>
-
-    <main class="hero-panel" id="figmaContainer">
-      <div class="hero-content">
-        <div class="hero-title">INTERACTIVE COMPUTING 2026</div>
-        <svg class="hero-shapes" viewBox="0 0 1360 1000" preserveAspectRatio="xMinYMid slice">
-          <defs>
-            <filter id="shadow">
-              <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.1"/>
-            </filter>
-          </defs>
-          <!-- Yellow square -->
-          <polygon points="30,560 280,720 280,970 30,810" fill="#ffeb3b" filter="url(#shadow)"/>
-          <!-- Orange square -->
-          <polygon points="70,700 380,820 380,1030 70,910" fill="#ffb74d" filter="url(#shadow)"/>
-          <!-- Red rectangle -->
-          <polygon points="180,600 480,720 480,1000 180,880" fill="#ff7043" filter="url(#shadow)"/>
-          <!-- Brown circle -->
-          <circle cx="325" cy="510" r="90" fill="#c77373" filter="url(#shadow)"/>
-        </svg>
-      </div>
-    </main>
+    <main class="hero-panel"></main>
+    
+    <button class="menu-toggle" id="menuToggle" aria-label="메뉴 열기">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
 
     <aside class="slide-menu" id="slideMenu">
       <div class="menu-header">
@@ -64,7 +152,6 @@
   </div>
 
   <script>
-    // 메뉴 토글
     const menuToggle = document.getElementById('menuToggle');
     const slideMenu = document.getElementById('slideMenu');
     const closeMenu = document.getElementById('closeMenu');
