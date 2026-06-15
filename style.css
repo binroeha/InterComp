@@ -141,6 +141,40 @@ body::before {
   0%, 100% { opacity: 0.6; }
   50% { opacity: 1; }
 }
+
+body.code-page {
+  background: #f5f5f5;
+}
+body.code-page .page-shell {
+  min-height: 100vh;
+  overflow: hidden;
+  padding: 0;
+}
+body.code-page .topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  background: #f5f5f5;
+  border-bottom: 1px solid rgba(0,0,0,.06);
+}
+body.code-page .frame-panel {
+  min-height: 100vh;
+  margin-top: 72px;
+  border-radius: 0;
+  border: none;
+  background: #fff;
+  padding: 0;
+}
+body.code-page .frame-panel iframe {
+  height: calc(100vh - 72px);
+}
+@media (max-width: 780px) {
+  body.code-page .frame-panel iframe {
+    height: calc(100vh - 60px);
+  }
+}
 .slide-menu {
   position: fixed;
   top: 0;

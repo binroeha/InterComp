@@ -3,20 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>12주차 - 정적 서브페이지</title>
+  <title>12주차 - 코드 보기</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    body.code-page { background: #f5f5f5; }
+    .code-page .page-shell { min-height: 100vh; overflow: hidden; }
+    .code-page .topbar { position: fixed; top: 0; left: 0; right: 0; z-index: 20; background: #f5f5f5; border-bottom: 1px solid rgba(0,0,0,.06); }
+    .code-page .hero-panel { display: none; }
+    .code-page .frame-panel { min-height: 100vh; margin-top: 72px; border-radius: 0; border: none; background: #fff; }
+    .code-page .frame-panel iframe { height: calc(100vh - 72px); }
+  </style>
 </head>
-<body>
+<body class="code-page">
   <div class="page-shell">
-    <header class="sub-hero">
-      <p class="eyebrow">12주차</p>
-      <h1>12주차</h1>
-      <p>이 페이지는 <span class="code-path">12/index.html</span>을 <strong>iframe</strong>으로 표시합니다.</p>
-      <p><a href="index.html">메인 페이지로 돌아가기</a> · <a href="12/index.html">원본 스케치 열기</a></p>
+    <header class="topbar">
+      <div class="topbar-left">
+        <span class="brand-tag">12주차</span>
+      </div>
+      <button class="menu-toggle" id="menuToggle" aria-label="메뉴 열기">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </header>
+
     <main class="frame-panel">
       <iframe src="12/index.html" title="12주차 sketch"></iframe>
     </main>
+
+    <aside class="slide-menu" id="slideMenu">
+      <div class="menu-header">
+        <strong>코드 리스트</strong>
+        <button class="close-btn" id="closeMenu" aria-label="메뉴 닫기">×</button>
+      </div>
+      <nav class="menu-items">
+        <a href="page-2.html">2주차주차 코드 보기</a>
+        <a href="page-3.html">3주차주차 코드 보기</a>
+        <a href="page-4.html">4주차주차 코드 보기</a>
+        <a href="page-5.html">5주차주차 코드 보기</a>
+        <a href="page-6.html">6주차주차 코드 보기</a>
+        <a href="page-7.html">7주차주차 코드 보기</a>
+        <a href="page-8.html">8주차주차 코드 보기</a>
+        <a href="page-9.html">9주차주차 코드 보기</a>
+        <a href="page-11.html">11주차주차 코드 보기</a>
+        <a href="page-12.html">12주차주차 코드 보기</a>
+        <a href="page-13.html">13주차주차 코드 보기</a>
+        <a href="page-13-2.html">13-2주차주차 코드 보기</a>
+        <a href="page-14.html">14주차주차 코드 보기</a>
+      </nav>
+    </aside>
   </div>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const slideMenu = document.getElementById('slideMenu');
+    const closeMenu = document.getElementById('closeMenu');
+    menuToggle.addEventListener('click', () => slideMenu.classList.toggle('open'));
+    closeMenu.addEventListener('click', () => slideMenu.classList.remove('open'));
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') slideMenu.classList.remove('open');
+    });
+  </script>
 </body>
 </html>
