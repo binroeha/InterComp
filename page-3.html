@@ -3,19 +3,129 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>3주차 - 코드 보기</title>
-  <link rel="stylesheet" href="style.css">
+  <title>3주차</title>
   <style>
-    body.code-page { background: #f5f5f5; }
-    .code-page .page-shell { min-height: 100vh; overflow: hidden; }
-    .code-page .topbar { position: fixed; top: 0; left: 0; right: 0; z-index: 20; background: #f5f5f5; border-bottom: 1px solid rgba(0,0,0,.06); }
-    .code-page .hero-panel { display: none; }
-    .code-page .frame-panel { min-height: 100vh; margin-top: 72px; border-radius: 0; border: none; background: #fff; }
-    .code-page .frame-panel iframe { height: calc(100vh - 72px); }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; overflow: hidden; }
+    .container { display: flex; flex-direction: column; width: 100%; height: 100%; }
+    .topbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 20;
+      height: 72px;
+      background: #f5f5f5;
+      border-bottom: 1px solid rgba(0,0,0,.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 32px;
+    }
+    .brand-tag {
+      text-transform: uppercase;
+      letter-spacing: .4em;
+      color: rgba(20,20,21,.88);
+      font-size: .85rem;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+    .menu-toggle {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 1px solid rgba(20,20,21,.18);
+      background: rgba(255,255,255,.86);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      padding: 0;
+    }
+    .menu-toggle span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: #141415;
+      border-radius: 999px;
+    }
+    .menu-toggle span:nth-child(2) {
+      margin: 6px 0;
+    }
+    .content {
+      width: 100%;
+      height: calc(100vh - 72px);
+      margin-top: 72px;
+      overflow: hidden;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+    .slide-menu {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: min(420px, 100%);
+      height: 100vh;
+      transform: translateX(100%);
+      transition: transform .35s ease;
+      background: rgba(18,18,19,.95);
+      border-left: 1px solid rgba(255,255,255,.12);
+      box-shadow: -32px 0 120px rgba(20,20,21,.18);
+      padding: 28px 24px 32px;
+      z-index: 10;
+      color: #f4f4f5;
+      overflow-y: auto;
+    }
+    .slide-menu.open {
+      transform: translateX(0);
+    }
+    .menu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+    .menu-header strong {
+      text-transform: uppercase;
+      letter-spacing: .3em;
+      font-size: .95rem;
+      color: #fff;
+    }
+    .close-btn {
+      border: none;
+      background: transparent;
+      color: #fff;
+      font-size: 2.2rem;
+      line-height: 1;
+      cursor: pointer;
+    }
+    .menu-items {
+      display: grid;
+      gap: 12px;
+    }
+    .menu-items a {
+      display: block;
+      padding: 16px 18px;
+      color: #fff;
+      background: rgba(255,255,255,.06);
+      border-radius: 18px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform .22s ease, background .22s ease;
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 1rem;
+    }
+    .menu-items a:hover {
+      background: rgba(255,255,255,.14);
+      transform: translateX(4px);
+    }
   </style>
 </head>
-<body class="code-page">
-  <div class="page-shell">
+<body>
+  <div class="container">
     <header class="topbar">
       <div class="topbar-left">
         <span class="brand-tag">3주차</span>
@@ -27,9 +137,9 @@
       </button>
     </header>
 
-    <main class="frame-panel">
+    <div class="content">
       <iframe src="3/index.html" title="3주차 sketch"></iframe>
-    </main>
+    </div>
 
     <aside class="slide-menu" id="slideMenu">
       <div class="menu-header">
