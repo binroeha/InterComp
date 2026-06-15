@@ -13,12 +13,13 @@
     
     .hero-panel {
       width: 100%;
+      display: block;
+    }
+
+    .hero-panel img {
+      width: 100%;
       height: auto;
-      background-image: url('mainpage-full.png');
-      background-size: 100% auto;
-      background-position: left top;
-      background-repeat: no-repeat;
-      position: relative;
+      display: block;
     }
 
     .hero-title,
@@ -126,17 +127,7 @@
 <body>
   <div class="page-shell">
     <main class="hero-panel">
-      <div class="hero-title">INTERACTIVE COMPUTING 2026</div>
-      <svg class="shapes" viewBox="0 0 1440 900" preserveAspectRatio="none">
-        <!-- Yellow square -->
-        <rect x="20" y="560" width="220" height="220" fill="#ffeb3b"/>
-        <!-- Orange square -->
-        <rect x="100" y="620" width="220" height="220" fill="#ffb74d"/>
-        <!-- Red rectangle -->
-        <rect x="200" y="500" width="280" height="320" fill="#ff7043"/>
-        <!-- Brown circle -->
-        <circle cx="320" cy="380" r="100" fill="#b8726b"/>
-      </svg>
+      <img src="mainpage-full.png" alt="INTERACTIVE COMPUTING 2026">
     </main>
     
     <button class="menu-toggle" id="menuToggle" aria-label="메뉴 열기">
