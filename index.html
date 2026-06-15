@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>제목 없음 - 정적 HTML 포트폴리오</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="topbar-left">
+        <span class="brand-tag">INTERACTIVE COMPUTING</span>
+      </div>
+      <button class="menu-toggle" id="menuToggle" aria-label="메뉴 열기">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+
+    <main class="hero-panel" id="figmaContainer">
+      <div class="hero-content">
+        <div class="hero-title">INTERACTIVE COMPUTING 2026</div>
+        <svg class="hero-shapes" viewBox="0 0 1360 1000" preserveAspectRatio="xMinYMid slice">
+          <defs>
+            <filter id="shadow">
+              <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.1"/>
+            </filter>
+          </defs>
+          <!-- Yellow square -->
+          <polygon points="30,560 280,720 280,970 30,810" fill="#f7dd00" filter="url(#shadow)"/>
+          <!-- Orange square -->
+          <polygon points="70,700 380,820 380,1030 70,910" fill="#ffb84d" filter="url(#shadow)"/>
+          <!-- Red rectangle -->
+          <polygon points="180,600 480,720 480,1000 180,880" fill="#ff7f5c" filter="url(#shadow)"/>
+          <!-- Brown circle -->
+          <circle cx="325" cy="510" r="90" fill="#b8726b" filter="url(#shadow)"/>
+        </svg>
+      </div>
+    </main>
+
+    <aside class="slide-menu" id="slideMenu">
+      <div class="menu-header">
+        <strong>코드 리스트</strong>
+        <button class="close-btn" id="closeMenu" aria-label="메뉴 닫기">×</button>
+      </div>
+      <nav class="menu-items">
+        <a href="page-2.html">02주차 코드 보기</a>
+        <a href="page-3.html">03주차 코드 보기</a>
+        <a href="page-4.html">04주차 코드 보기</a>
+        <a href="page-5.html">05주차 코드 보기</a>
+        <a href="page-6.html">06주차 코드 보기</a>
+        <a href="page-7.html">07주차 코드 보기</a>
+        <a href="page-8.html">08주차 코드 보기</a>
+        <a href="page-9.html">09주차 코드 보기</a>
+        <a href="page-11.html">11주차 코드 보기</a>
+        <a href="page-12.html">12주차 코드 보기</a>
+        <a href="page-13.html">13주차 코드 보기</a>
+        <a href="page-13-2.html">13-2주차 코드 보기</a>
+        <a href="page-14.html">14주차 코드 보기</a>
+      </nav>
+    </aside>
+  </div>
+
+  <script>
+    // 메뉴 토글
+    const menuToggle = document.getElementById('menuToggle');
+    const slideMenu = document.getElementById('slideMenu');
+    const closeMenu = document.getElementById('closeMenu');
+    menuToggle.addEventListener('click', () => slideMenu.classList.toggle('open'));
+    closeMenu.addEventListener('click', () => slideMenu.classList.remove('open'));
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') slideMenu.classList.remove('open');
+    });
+  </script>
+</body>
+</html>
