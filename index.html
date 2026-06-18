@@ -55,6 +55,7 @@
       margin: 6px 0;
     }
     
+    /* [수정] 배경을 반투명한 백색으로, 글자색을 어두운 톤으로 변경하고 backdrop-filter(블러) 추가 */
     .slide-menu {
       position: fixed;
       top: 0;
@@ -63,12 +64,14 @@
       height: 100vh;
       transform: translateX(100%);
       transition: transform .35s ease;
-      background: rgba(18,18,19,.95);
-      border-left: 1px solid rgba(255,255,255,.12);
-      box-shadow: -32px 0 120px rgba(20,20,21,.18);
+      background: rgba(255, 255, 255, 0.85); /* 반투명 백색 */
+      backdrop-filter: blur(10px); /* 뒤쪽 배경이 은은하게 비치는 효과 */
+      -webkit-backdrop-filter: blur(10px);
+      border-left: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: -20px 0 60px rgba(0, 0, 0, 0.1);
       padding: 28px 24px 32px;
       z-index: 10;
-      color: #f4f4f5;
+      color: #141415; /* 불투명한 검은색 계열 */
       overflow-y: auto;
     }
     
@@ -76,6 +79,7 @@
       transform: translateX(0);
     }
     
+    /* [수정] 헤더 텍스트 색상 변경 */
     .menu-header {
       display: flex;
       justify-content: space-between;
@@ -88,13 +92,14 @@
       text-transform: uppercase;
       letter-spacing: .3em;
       font-size: .95rem;
-      color: #fff;
+      color: #141415;
     }
     
+    /* [수정] 닫기 버튼 색상 변경 */
     .close-btn {
       border: none;
       background: transparent;
-      color: #fff;
+      color: #141415;
       font-size: 2.2rem;
       line-height: 1;
       cursor: pointer;
@@ -105,11 +110,12 @@
       gap: 12px;
     }
     
+    /* [수정] 메뉴 링크를 어두운 글씨와 밝은 반투명 배경으로 변경 */
     .menu-items a {
       display: block;
       padding: 16px 18px;
-      color: #fff;
-      background: rgba(255,255,255,.06);
+      color: #141415;
+      background: rgba(0, 0, 0, 0.05); /* 연한 검은색 반투명 */
       border-radius: 18px;
       text-decoration: none;
       font-weight: 700;
@@ -119,8 +125,17 @@
     }
     
     .menu-items a:hover {
-      background: rgba(255,255,255,.14);
+      background: rgba(0, 0, 0, 0.1);
       transform: translateX(4px);
+    }
+
+    /* [추가] 메인 화면 바로가기 전용 스타일 (강조 효과) */
+    .menu-items a.main-link {
+      background: #141415;
+      color: #fff;
+    }
+    .menu-items a.main-link:hover {
+      background: #2a2a2c;
     }
   </style>
 </head>
@@ -142,6 +157,9 @@
         <button class="close-btn" id="closeMenu" aria-label="메뉴 닫기">×</button>
       </div>
       <nav class="menu-items">
+        <a href="index.html" class="main-link">🏠 메인 화면으로 이동</a>
+        <hr style="border: none; border-top: 1px solid rgba(0,0,0,0.1); margin: 4px 0 8px 0;">
+        
         <a href="page-2.html">2주차 코드 보기</a>
         <a href="page-3.html">3주차 코드 보기</a>
         <a href="page-4.html">4주차 코드 보기</a>
