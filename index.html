@@ -55,7 +55,7 @@
       margin: 6px 0;
     }
     
-    /* [수정] 배경을 반투명한 백색으로, 글자색을 어두운 톤으로 변경하고 backdrop-filter(블러) 추가 */
+    /* [수정] 투명도를 0.45로 대폭 올림 (숫자가 낮을수록 투명함) */
     .slide-menu {
       position: fixed;
       top: 0;
@@ -64,14 +64,14 @@
       height: 100vh;
       transform: translateX(100%);
       transition: transform .35s ease;
-      background: rgba(255, 255, 255, 0.85); /* 반투명 백색 */
-      backdrop-filter: blur(10px); /* 뒤쪽 배경이 은은하게 비치는 효과 */
-      -webkit-backdrop-filter: blur(10px);
-      border-left: 1px solid rgba(0, 0, 0, 0.08);
-      box-shadow: -20px 0 60px rgba(0, 0, 0, 0.1);
+      background: rgba(255, 255, 255, 0.45); /* 투명도 대폭 상향 */
+      backdrop-filter: blur(12px); /* 투명해진 만큼 블러를 살짝 올려 가독성 확보 */
+      -webkit-backdrop-filter: blur(12px);
+      border-left: 1px solid rgba(0, 0, 0, 0.05);
+      box-shadow: -10px 0 40px rgba(0, 0, 0, 0.05);
       padding: 28px 24px 32px;
       z-index: 10;
-      color: #141415; /* 불투명한 검은색 계열 */
+      color: #141415;
       overflow-y: auto;
     }
     
@@ -79,7 +79,6 @@
       transform: translateX(0);
     }
     
-    /* [수정] 헤더 텍스트 색상 변경 */
     .menu-header {
       display: flex;
       justify-content: space-between;
@@ -95,7 +94,6 @@
       color: #141415;
     }
     
-    /* [수정] 닫기 버튼 색상 변경 */
     .close-btn {
       border: none;
       background: transparent;
@@ -110,12 +108,13 @@
       gap: 12px;
     }
     
-    /* [수정] 메뉴 링크를 어두운 글씨와 밝은 반투명 배경으로 변경 */
+    /* [수정] 메뉴 안의 버튼들도 배경 투명도를 더 높여서 유기적으로 연결되게 변경 */
     .menu-items a {
       display: block;
       padding: 16px 18px;
       color: #141415;
-      background: rgba(0, 0, 0, 0.05); /* 연한 검은색 반투명 */
+      background: rgba(255, 255, 255, 0.4); /* 버튼 자체도 반투명하게 변경 */
+      border: 1px solid rgba(0, 0, 0, 0.03);
       border-radius: 18px;
       text-decoration: none;
       font-weight: 700;
@@ -125,17 +124,17 @@
     }
     
     .menu-items a:hover {
-      background: rgba(0, 0, 0, 0.1);
+      background: rgba(255, 255, 255, 0.7);
       transform: translateX(4px);
     }
 
-    /* [추가] 메인 화면 바로가기 전용 스타일 (강조 효과) */
+    /* [수정] 메인 화면 바로가기도 반투명 다크 톤으로 변경하여 일질감을 줄임 */
     .menu-items a.main-link {
-      background: #141415;
+      background: rgba(20, 20, 21, 0.85);
       color: #fff;
     }
     .menu-items a.main-link:hover {
-      background: #2a2a2c;
+      background: rgba(20, 20, 21, 0.95);
     }
   </style>
 </head>
@@ -158,7 +157,7 @@
       </div>
       <nav class="menu-items">
         <a href="index.html" class="main-link">🏠 메인 화면으로 이동</a>
-        <hr style="border: none; border-top: 1px solid rgba(0,0,0,0.1); margin: 4px 0 8px 0;">
+        <hr style="border: none; border-top: 1px solid rgba(0,0,0,0.08); margin: 4px 0 8px 0;">
         
         <a href="page-2.html">2주차 코드 보기</a>
         <a href="page-3.html">3주차 코드 보기</a>
